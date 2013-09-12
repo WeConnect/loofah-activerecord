@@ -8,12 +8,7 @@ end
 
 if defined?(Rails) && Rails::VERSION::MAJOR == 3
   require 'loofah/activerecord/railtie'
-elsif defined? Rails.configuration and Rails.configuration.frameworks.include?([:active_record]) # >= 2.1
-  Rails.configuration.after_initialize do
-    require 'loofah/activerecord/active_record'
-    require 'loofah/activerecord/xss_foliate'
-  end
-elsif defined? ActiveRecord::Base # <= 2.0
+else
   require 'loofah/activerecord/active_record'
   require 'loofah/activerecord/xss_foliate'
 end
